@@ -10,7 +10,7 @@ import { ArticlesService } from '../Services/articles.service';
 })
 export class ArticleComponent implements OnInit {
 
-  article: Article = null;
+  article: Article = new Article();
 
   constructor(private route: ActivatedRoute,
               private articleService: ArticlesService,
@@ -21,7 +21,7 @@ export class ArticleComponent implements OnInit {
       const key = params.key;
       this.articleService.getArticle(key).subscribe(currentArticle => {
         if (currentArticle === undefined || currentArticle === null) {
-          this.router.navigateByUrl('');
+          this.router.navigateByUrl('notfound');
           return;
         }
         this.article = currentArticle;
