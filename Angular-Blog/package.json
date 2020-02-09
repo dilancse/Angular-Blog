@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dev:ssr": "ng run Angular-Blog:serve-ssr",
+    "serve:ssr": "node dist/Angular-Blog-server/main.js",
+    "build:ssr": "ng build --prod && ng run Angular-Blog:server:production",
+    "prerender": "ng run Angular-Blog:prerender"
   },
   "private": true,
   "dependencies": {
@@ -18,7 +22,10 @@
     "@angular/forms": "~8.2.14",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/platform-server": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@nguniversal/express-engine": "^9.0.0",
+    "express": "^4.15.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -28,6 +35,8 @@
     "@angular/cli": "~8.3.23",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
+    "@nguniversal/builders": "^9.0.0",
+    "@types/express": "^4.17.0",
     "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
