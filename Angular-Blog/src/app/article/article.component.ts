@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../models/article';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticlesService } from '../Services/articles.service';
+import { SharedService } from '../Services/shared.service';
 
 @Component({
   selector: 'app-article',
@@ -14,7 +15,8 @@ export class ArticleComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private articleService: ArticlesService,
-              private router: Router) { }
+              private router: Router,
+              private sharedService: SharedService) { }
 
   ngOnInit() {
     this.route.params.subscribe( params => {
@@ -25,6 +27,7 @@ export class ArticleComponent implements OnInit {
           return;
         }
         this.article = currentArticle;
+        this.sharedService.setPageTitle(this.article.title);
       });
     });
   }
